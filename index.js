@@ -23,6 +23,10 @@ app.use('/api/auth', require('./routes/auth'));
 // CRUD: EVENTOS
 app.use('/api/events', require('./routes/events'));
 
+app.get('*', (req, res) => { //Para deployar nuestra app de react junto con el backend en prod.
+    res.sendFile(__dirname + '/public/index.html');
+})
+
 //Escuchar peticiones
 app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en el puerto ${process.env.PORT} `);    
